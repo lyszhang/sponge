@@ -66,7 +66,7 @@ func (a *App) Run() {
 // watch the os signal and the ctx signal from the errgroup, and stop the service if either signal is triggered
 func (a *App) watch(ctx context.Context) error {
 	sig := make(chan os.Signal, 1)
-	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP, syscall.SIGTRAP)
+	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM, syscall.SIGTRAP)
 	profile := prof.NewProfile()
 
 	for {
@@ -80,7 +80,7 @@ func (a *App) watch(ctx context.Context) error {
 			switch sigType {
 			case syscall.SIGTRAP:
 				profile.StartOrStop() // start or stop sampling profile
-			case syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP:
+			case syscall.SIGINT, syscall.SIGTERM:
 				if err := a.stop(); err != nil {
 					return err
 				}
