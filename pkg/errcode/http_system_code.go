@@ -3,7 +3,7 @@ package errcode
 // nolint
 // http system level error code, error code range 10000~20000
 var (
-	Success             = NewError(0, "ok")
+	Success             = NewError(200, "ok")
 	InvalidParams       = NewError(10001, "Invalid Parameter")
 	Unauthorized        = NewError(10002, "Unauthorized")
 	InternalServerError = NewError(10003, "Internal Server Error")
