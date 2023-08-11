@@ -36,7 +36,7 @@ type options struct {
 	signingKey    []byte
 	expire        time.Duration
 	issuer        string
-	signingMethod *jwt.SigningMethodHMAC
+	signingMethod jwt.SigningMethod
 }
 
 func defaultOptions() *options {
@@ -65,7 +65,7 @@ func WithSigningKey(key string) Option {
 }
 
 // WithSigningMethod set signing method value
-func WithSigningMethod(sm *jwt.SigningMethodHMAC) Option {
+func WithSigningMethod(sm jwt.SigningMethod) Option {
 	return func(o *options) {
 		o.signingMethod = sm
 	}
